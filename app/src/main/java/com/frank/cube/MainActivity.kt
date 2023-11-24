@@ -91,20 +91,39 @@ fun compute0(): Boolean {
     queue.clear()
     steps = ""
 
+// 14242324 --> (13)23(24)23    13 24 24 24
+//    face0 = arrayListOf(
+//        intArrayOf(YELLOW, WHITE, YELLOW),
+//        intArrayOf(WHITE, YELLOW, WHITE),
+//        intArrayOf(YELLOW, WHITE, YELLOW)
+//    )
+//    face1 = arrayListOf(
+//        intArrayOf(WHITE, YELLOW, WHITE),
+//        intArrayOf(YELLOW, WHITE, YELLOW),
+//        intArrayOf(WHITE, YELLOW, WHITE)
+//    )
+//    face2 = arrayListOf(intArrayOf(RED, BLUE, RED), intArrayOf(BLUE, RED, BLUE))
+//    face3 = arrayListOf(intArrayOf(GREEN, RED, GREEN), intArrayOf(RED, GREEN, RED))
+//    face4 = arrayListOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(GREEN, ORANGE, GREEN))
+//    face5 = arrayListOf(intArrayOf(BLUE, ORANGE, BLUE), intArrayOf(ORANGE, BLUE, ORANGE))
+//    cube = arrayOf(face0, face1, face2, face3, face4, face5)
+
+
+// 3132 413
     face0 = arrayListOf(
-        intArrayOf(YELLOW, WHITE, YELLOW),
-        intArrayOf(WHITE, YELLOW, WHITE),
-        intArrayOf(YELLOW, WHITE, YELLOW)
+        intArrayOf(YELLOW, YELLOW, YELLOW),
+        intArrayOf(YELLOW, YELLOW, YELLOW),
+        intArrayOf(YELLOW, YELLOW, YELLOW)
     )
     face1 = arrayListOf(
-        intArrayOf(WHITE, YELLOW, WHITE),
-        intArrayOf(YELLOW, WHITE, YELLOW),
-        intArrayOf(WHITE, YELLOW, WHITE)
+        intArrayOf(WHITE, WHITE, WHITE),
+        intArrayOf(WHITE, WHITE, WHITE),
+        intArrayOf(WHITE, WHITE, WHITE)
     )
-    face2 = arrayListOf(intArrayOf(RED, BLUE, RED), intArrayOf(BLUE, RED, BLUE))
-    face3 = arrayListOf(intArrayOf(GREEN, RED, GREEN), intArrayOf(RED, GREEN, RED))
-    face4 = arrayListOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(GREEN, ORANGE, GREEN))
-    face5 = arrayListOf(intArrayOf(BLUE, ORANGE, BLUE), intArrayOf(ORANGE, BLUE, ORANGE))
+    face2 = arrayListOf(intArrayOf(RED, BLUE, RED), intArrayOf(RED, BLUE, RED))
+    face3 = arrayListOf(intArrayOf(GREEN, ORANGE, GREEN), intArrayOf(GREEN, ORANGE, GREEN))
+    face4 = arrayListOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(ORANGE, GREEN, ORANGE))
+    face5 = arrayListOf(intArrayOf(BLUE, RED, BLUE), intArrayOf(BLUE, RED, BLUE))
     cube = arrayOf(face0, face1, face2, face3, face4, face5)
 
     for (i in 0 until 10) {
@@ -287,4 +306,3 @@ fun checkOK(): Boolean {
     }
     return true
 }
-// 14242324 --> (13)23(24)23    13 24 24 24
