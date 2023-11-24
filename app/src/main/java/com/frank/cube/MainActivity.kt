@@ -13,49 +13,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.frank.cube.ui.theme.CubeTheme
 
 var steps by mutableStateOf("")
-lateinit var mainActivity: MainActivity
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mainActivity = this
-        setContent {
-            CubeTheme {
-                Surface(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clickable {
-                            compute()
-                        },
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting(steps)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CubeTheme {
-        Greeting("Android")
-    }
-}
-
 const val WHITE = 0
 const val YELLOW = 1
 const val BLUE = 2
@@ -67,32 +28,50 @@ const val RED = 5
 //-1: U'
 //2:  U2
 //3:  M2
-val direction = intArrayOf(1, -1, 2, 3)
-var face0 = arrayOf(
-    intArrayOf(YELLOW, WHITE, YELLOW),
-    intArrayOf(WHITE, YELLOW, WHITE),
-    intArrayOf(YELLOW, WHITE, YELLOW)
-)
+//4:  HM2
+val direction = intArrayOf(1, -1, 2, 3, 4)
 
-var face1 = arrayOf(
-    intArrayOf(WHITE, YELLOW, WHITE),
-    intArrayOf(YELLOW, WHITE, YELLOW),
-    intArrayOf(WHITE, YELLOW, WHITE)
-)
-var face2 = arrayOf(intArrayOf(RED, BLUE, RED), intArrayOf(BLUE, RED, BLUE))
-var face3 = arrayOf(intArrayOf(GREEN, RED, GREEN), intArrayOf(RED, GREEN, RED))
-var face4 = arrayOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(GREEN, ORANGE, GREEN))
-var face5 = arrayOf(intArrayOf(BLUE, ORANGE, BLUE), intArrayOf(ORANGE, BLUE, ORANGE))
-var cube = arrayOf(face0, face1, face2, face3, face4, face5)
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            CubeTheme {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable {
+                            compute()
+                        }, color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting(steps)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!", modifier = modifier,
+        fontSize = 30.sp
+    )
+}
+
+lateinit var face0: ArrayList<IntArray>
+lateinit var face1: ArrayList<IntArray>
+lateinit var face2: ArrayList<IntArray>
+lateinit var face3: ArrayList<IntArray>
+lateinit var face4: ArrayList<IntArray>
+lateinit var face5: ArrayList<IntArray>
+lateinit var cube: Array<ArrayList<IntArray>>
 val queue = ArrayDeque(listOf(1))
-
-var minStr =
-    "asdfasdfasdfasdfsdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+var minStr = "S".repeat(50)
 
 class MyThread : Thread() {
     override fun run() {
         super.run()
-        for (i in 0 until 1000000) {
+        for (i in 0 until 10000) {
             if (compute0()) {
                 if (steps.length < minStr.length) {
                     minStr = steps
@@ -112,20 +91,20 @@ fun compute0(): Boolean {
     queue.clear()
     steps = ""
 
-    face0 = arrayOf(
+    face0 = arrayListOf(
         intArrayOf(YELLOW, WHITE, YELLOW),
         intArrayOf(WHITE, YELLOW, WHITE),
         intArrayOf(YELLOW, WHITE, YELLOW)
     )
-    face1 = arrayOf(
+    face1 = arrayListOf(
         intArrayOf(WHITE, YELLOW, WHITE),
         intArrayOf(YELLOW, WHITE, YELLOW),
         intArrayOf(WHITE, YELLOW, WHITE)
     )
-    face2 = arrayOf(intArrayOf(RED, BLUE, RED), intArrayOf(BLUE, RED, BLUE))
-    face3 = arrayOf(intArrayOf(GREEN, RED, GREEN), intArrayOf(RED, GREEN, RED))
-    face4 = arrayOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(GREEN, ORANGE, GREEN))
-    face5 = arrayOf(intArrayOf(BLUE, ORANGE, BLUE), intArrayOf(ORANGE, BLUE, ORANGE))
+    face2 = arrayListOf(intArrayOf(RED, BLUE, RED), intArrayOf(BLUE, RED, BLUE))
+    face3 = arrayListOf(intArrayOf(GREEN, RED, GREEN), intArrayOf(RED, GREEN, RED))
+    face4 = arrayListOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(GREEN, ORANGE, GREEN))
+    face5 = arrayListOf(intArrayOf(BLUE, ORANGE, BLUE), intArrayOf(ORANGE, BLUE, ORANGE))
     cube = arrayOf(face0, face1, face2, face3, face4, face5)
 
     for (i in 0 until 10) {
@@ -308,7 +287,4 @@ fun checkOK(): Boolean {
     }
     return true
 }
-
-// 14242324
-// -->
-// 1323 2423
+// 14242324 --> (13)23(24)23
