@@ -110,20 +110,37 @@ fun compute0(): Boolean {
 
 
 // 3132 413
+//    face0 = arrayListOf(
+//        intArrayOf(YELLOW, YELLOW, YELLOW),
+//        intArrayOf(YELLOW, YELLOW, YELLOW),
+//        intArrayOf(YELLOW, YELLOW, YELLOW)
+//    )
+//    face1 = arrayListOf(
+//        intArrayOf(WHITE, WHITE, WHITE),
+//        intArrayOf(WHITE, WHITE, WHITE),
+//        intArrayOf(WHITE, WHITE, WHITE)
+//    )
+//    face2 = arrayListOf(intArrayOf(RED, BLUE, RED), intArrayOf(RED, BLUE, RED))
+//    face3 = arrayListOf(intArrayOf(GREEN, ORANGE, GREEN), intArrayOf(GREEN, ORANGE, GREEN))
+//    face4 = arrayListOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(ORANGE, GREEN, ORANGE))
+//    face5 = arrayListOf(intArrayOf(BLUE, RED, BLUE), intArrayOf(BLUE, RED, BLUE))
+//    cube = arrayOf(face0, face1, face2, face3, face4, face5)
+
+// 313-13
     face0 = arrayListOf(
         intArrayOf(YELLOW, YELLOW, YELLOW),
-        intArrayOf(YELLOW, YELLOW, YELLOW),
+        intArrayOf(YELLOW, WHITE, YELLOW),
         intArrayOf(YELLOW, YELLOW, YELLOW)
     )
     face1 = arrayListOf(
         intArrayOf(WHITE, WHITE, WHITE),
-        intArrayOf(WHITE, WHITE, WHITE),
+        intArrayOf(WHITE, YELLOW, WHITE),
         intArrayOf(WHITE, WHITE, WHITE)
     )
-    face2 = arrayListOf(intArrayOf(RED, BLUE, RED), intArrayOf(RED, BLUE, RED))
-    face3 = arrayListOf(intArrayOf(GREEN, ORANGE, GREEN), intArrayOf(GREEN, ORANGE, GREEN))
-    face4 = arrayListOf(intArrayOf(ORANGE, GREEN, ORANGE), intArrayOf(ORANGE, GREEN, ORANGE))
-    face5 = arrayListOf(intArrayOf(BLUE, RED, BLUE), intArrayOf(BLUE, RED, BLUE))
+    face2 = arrayListOf(intArrayOf(BLUE, ORANGE, BLUE), intArrayOf(BLUE, BLUE, BLUE))
+    face3 = arrayListOf(intArrayOf(RED, GREEN, RED), intArrayOf(RED, RED, RED))
+    face4 = arrayListOf(intArrayOf(GREEN, RED, GREEN), intArrayOf(GREEN, GREEN, GREEN))
+    face5 = arrayListOf(intArrayOf(ORANGE, BLUE, ORANGE), intArrayOf(ORANGE, ORANGE, ORANGE))
     cube = arrayOf(face0, face1, face2, face3, face4, face5)
 
     for (i in 0 until 10) {
